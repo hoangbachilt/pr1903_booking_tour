@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parent_id: 1
+  tour_id: 1
+  user_id: 1
+  category_id: 1
+  content: MyText
+  tour: one
+  user: one
+  category: one
+
+two:
+  parent_id: 1
+  tour_id: 1
+  user_id: 1
+  category_id: 1
+  content: MyText
+  tour: two
+  user: two
+  category: two
