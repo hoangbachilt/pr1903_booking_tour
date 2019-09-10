@@ -60,3 +60,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "faker"
+gem 'bootstrap-sass', '2.3.2.0'
+gem "will_paginate"
+gem "bootstrap-will_paginate"
