@@ -1,0 +1,11 @@
+<% provide(:title,'All tours') %>
+<h1>All tours</h1>
+<%= will_paginate %>
+<ul class="tours">
+  <% @tours.each do |tour| %>
+    <li>
+     <%= link_to tour.name, tour %>
+    </li>
+  <% end %>
+</ul>
+<%= will_paginate %>
