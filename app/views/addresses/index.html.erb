@@ -1,0 +1,11 @@
+<% provide(:title,'All addresses') %>
+<h1>All addresses</h1>
+<%= will_paginate %>
+<ul class="addresses">
+  <% @addresses.each do |address| %>
+    <li>
+     <%= link_to address.city, address %>
+    </li>
+  <% end %>
+</ul>
+<%= will_paginate %>
