@@ -4,7 +4,8 @@ class ToursController < ApplicationController
   end
 
   def show
-    @tours = Tour.find(params[:id])
+    @tour = Tour.find(params[:id])
+    @comments = @tour.comments.paginate(page: params[:page])
   end
 
 end
