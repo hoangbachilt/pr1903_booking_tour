@@ -1,8 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<% if @user.avatar.attached? %>
+  <div style="width:70px; height:auto">
+    <%= link_to image_tag(@user.avatar, style:'width:100%'), users_path %>
+  </div>
+  <% else %>
+    <%= gravatar_for @user, size: 50 %>
+<% end %>
+
 <p>
   <strong>Name:</strong>
-  <%= gravatar_for @user %>
   <%= @user.name %>
 </p>
 
