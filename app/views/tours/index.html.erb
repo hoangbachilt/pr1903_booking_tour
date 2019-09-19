@@ -1,6 +1,17 @@
 <% provide(:title,'All tours') %>
 <h1>All tours</h1>
-<%= will_paginate %>
+<%= will_paginate %> 
+
+<div class="row">
+  <%= form_tag(tours_path,method: :get) do %>
+    <div class="col-sm-2">
+      <%= text_field_tag :name, params[:name] %>
+    </div>
+    <div class="col-sm-1"> 
+      <%= submit_tag 'Search' %>
+    </div>
+  <% end %>
+</div>
 <ul class="tours">
   <% @tours.each do |tour| %>
     <li>
