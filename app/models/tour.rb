@@ -2,6 +2,7 @@ class Tour < ApplicationRecord
   belongs_to :address
   has_many :comments
   has_many :ratings
+  has_many :booking_requests
   
   def self.search(name, page)
     if name

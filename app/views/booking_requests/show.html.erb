@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>tour_id:</strong>
+  <%= @booking_request.tour_id%>
+  <br>
+  <strong>user email:</strong>
+  <%= @booking_request.user.email %>
+  <br>
+  <strong>status:</strong>
+  <% if @booking_request.status%>
+    <p>booking_request approved</p>
+  <% else %>
+    <p>booking_request rejected</p>
+   <% end %>
+  <br>
+</p>
+<%= link_to 'Back', booking_requests_path %>

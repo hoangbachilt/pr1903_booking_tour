@@ -12,6 +12,16 @@
   <br>
   <strong>rate:</strong>
   <%= @tour.ratings.average(:quanity) %>
+  <br>
+  <strong>status:</strong>
+  <% if @booking_request && @booking_request.status%>
+    <p>booking_request approved</p>
+  <% elsif @booking_request %>
+    <p>booking_request rejected</p>
+  <% else %>
+    <p>can book this tour</p>
+   <% end %>
+  <br>
 </p>
 <%= will_paginate @comments %>
 <% @comments.each do |comment| %>
@@ -20,4 +30,7 @@
  <p>
    <% end %>
 
-<%= link_to 'Back', addresses_path %>
+<%= link_to 'Back', tours_path %>
+
+
+
