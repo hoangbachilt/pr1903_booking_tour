@@ -19,18 +19,49 @@
   <% elsif @booking_request %>
     <p>booking_request rejected</p>
   <% else %>
-    <p>can book this tour</p>
+  <%= link_to "book this tour", booking_requests_path(booking_request: {tour_id: @tour.id}), method: :post %>
    <% end %>
   <br>
 </p>
-<%= will_paginate @comments %>
+
+<%= link_to 'Book Tour', booking_requests_path(booking_request:{tour_id: @tour.id}), method: :post %>
+
+<%=  @comment.errors.any? %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form_for(@comment) do |f| %>
+    <%= f.label :comment %>
+    <%= f.text_field :content, class: 'form-control' %>
+    <%= f.hidden_field :tour_id, value: @tour.id %>
+    <%= f.hidden_field :category_id, value: Category.first.id %>
+    <%= f.submit %>
+  <% end %>
+  </div>
+</div>
+
 <% @comments.each do |comment| %>
- <p>
-   <%= comment.content %> on the post <%= comment.user.name %>
- <p>
-   <% end %>
+  <%= comment.content %> on the user <%= comment.user.name %>
+    <p> sub cmt</p>
+    <% comment.sub_comments.each do |sub_cmt| %>
+      <p><%= sub_cmt.content %> </p>
+    <% end %>
 
-  <%= link_to 'Book Tour', booking_requests_path(booking_request:{tour_id: @tour.id}), method: :post %>
+  <%= form_for (Comment.new) do |f| %>
+    <%= f.label :comment %>
+    <%= f.text_field :content, class: 'form-control' %>
+    <%= f.hidden_field :tour_id, value: @tour.id %>
+    <%= f.hidden_field :category_id, value: Category.first.id %>
+    <%= f.hidden_field :parent_id, value: comment.id %>
+    <%= f.submit %>
+  <% end %>
+<% end %>
 
-<%= link_to 'Back', addresses_path %>
-
+<%= link_to 'Back', tours_path %>
