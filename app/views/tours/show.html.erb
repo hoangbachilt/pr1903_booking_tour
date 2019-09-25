@@ -2,13 +2,13 @@
 
 <p>
   <strong>name:</strong>
-  <%= @tour.name%>
+  <%= @tour.name %>
   <br>
   <strong>price:</strong>
-  <%= @tour.price%>
+  <%= @tour.price %>
   <br>
   <strong>content:</strong>
-  <%= @tour.content%>
+  <%= @tour.content %>
   <br>
   <strong>rate:</strong>
   <%= @tour.ratings.average(:quanity) %>
@@ -30,7 +30,7 @@
  <p>
    <% end %>
 
-<%= link_to 'Back', tours_path %>
+  <%= link_to 'Book Tour', booking_requests_path(booking_request:{tour_id: @tour.id}), method: :post %>
 
-
+<%= link_to 'Back', addresses_path %>
 

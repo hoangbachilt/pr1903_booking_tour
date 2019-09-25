@@ -1,5 +1,4 @@
 class ToursController < ApplicationController
-  before_action :logged_in_user,  only: [:index,  :edit,  :update]
   
   def index
     @tours = Tour.search(params[:name], params[:page])
@@ -12,10 +11,8 @@ class ToursController < ApplicationController
   end
 
   private
-  def logged_in_user
-    unless logged_in?
-      respond_to do |format|
-      format.html { redirect_to login_url, alert: 'Please log in.' }
-    end
+  def tour_params
+    params.require(:tour).permit(:name, :price, :content)
   end
+
 end
