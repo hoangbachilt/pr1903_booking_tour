@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_one_attached :avatar
+  has_many :booking_requests
+  has_many :tours, through: :booking_requests
   attr_accessor :remember_token
   before_save {self.email = email.downcase}
   validates :name, presence: true, length: {maximum: 50}
@@ -21,7 +23,7 @@ class User < ApplicationRecord
 
   def remember
     self.remember_token = User.new_token
-    update_attribute(:remember_digest, User.degist(remember_token))
+    update_attribute(:remember_digest, User.digest(remember_token))
   end
 
   def forget
