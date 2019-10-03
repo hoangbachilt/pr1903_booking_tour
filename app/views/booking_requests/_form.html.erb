@@ -1,0 +1,4 @@
+<%= form_for @booking_request do |f| %>
+  <%= f.collection_select :tour_id, Tour.all, :id, :name %>
+  <%= f.submit %>
+<% end %>
