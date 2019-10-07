@@ -1,5 +1,5 @@
 class ToursController < ApplicationController
-  
+
   def index
     @tours = Tour.search(params[:name], params[:page])
   end
