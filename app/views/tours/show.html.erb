@@ -25,7 +25,13 @@
 </p>
 
 <%= link_to 'Book Tour', booking_requests_path(booking_request:{tour_id: @tour.id}), method: :post %>
-
+<% flash.each do |key, value| %>
+    <div id="error_explanation">
+      <div class="alert alert-#{key}">
+        <%= value unless value.blank? %>
+      </div>
+    </div>
+  <% end %>
 <%=  @comment.errors.any? %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
@@ -49,12 +55,26 @@
 
 <% @comments.each do |comment| %>
   <%= comment.content %> on the user <%= comment.user.name %>
-    <p> sub cmt</p>
+  <%= button_tag "Edit", id: "toggle_comment_#{comment.id}", class: "toggle_comment" %>
+  <%= form_for (comment), html: {style: 'display: none;'} do |f| %>
+  <%= f.label :comment %>
+  <%= f.text_field :content, class: 'form-control' %>
+   <%= f.submit %>
+<% end %>
+
+  <p> sub cmt</p>
     <% comment.sub_comments.each do |sub_cmt| %>
       <p><%= sub_cmt.content %> </p>
+      <%= button_tag "Edit", id: "toggle_comment_#{sub_cmt.id}", class: "toggle_comment" %>
+      <%= form_for (sub_cmt), html: {style: 'display: none;'} do |f| %>
+      <%= f.label :comment %>
+      <%= f.text_field :content, class: 'form-control' %>
+      <%= f.submit %>
     <% end %>
+  <% end %>
 
   <%= form_for (Comment.new) do |f| %>
+
     <%= f.label :comment %>
     <%= f.text_field :content, class: 'form-control' %>
     <%= f.hidden_field :tour_id, value: @tour.id %>

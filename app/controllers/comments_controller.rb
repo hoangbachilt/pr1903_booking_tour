@@ -1,13 +1,24 @@
 class CommentsController < ApplicationController
   before_action :logged_in_user
-
+  
   def create
     @comment = current_user.comments.new(comment_params)
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment.tour, notice: 'Comment was successfully created.' }
       else
-        format.html { redirect_to tours_path, alert: "Create fail"}
+        format.html { redirect_to @comment.tour, alert: @comment.errors.full_messages.first}
+      end
+    end
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    respond_to do |format|
+      if @comment.update_attributes(comment_params)
+        format.html { redirect_to @comment.tour, notice: 'Comment was successfully updated.' }
+      else
+        format.html { redirect_to @comment.tour, alert: @comment.errors.full_messages.first}
       end
     end
   end
@@ -25,4 +36,3 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:parent_id ,:tour_id, :user_id, :content, :category_id)
   end
 end
-
