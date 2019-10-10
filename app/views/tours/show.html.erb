@@ -72,7 +72,11 @@
     <% comment.sub_comments.each do |sub_cmt| %>
       <p><%= sub_cmt.content %> </p>
       <%= button_tag "Edit", id: "toggle_comment_#{sub_cmt.id}", class: "toggle_comment" %>
+      <% if current_user.likes.find_by(comment_id: sub_cmt.id) %>
+      <%= link_to "Unlike",like_path(current_user.likes.find_by(comment_id: sub_cmt.id)), method: :delete %>
+      <% else %>
       <%= link_to "Like",likes_path(likes: {comment_id: sub_cmt.id}), method: :post %>
+      <% end %>
       <%= sub_cmt.likes.count %>
       <%= form_for (sub_cmt), html: {style: 'display: none;'} do |f| %>
       <%= f.label :comment %>
@@ -92,3 +96,5 @@
 <% end %>
 
 <%= link_to 'Back', tours_path %>
+
+
