@@ -3,6 +3,8 @@ class User < ApplicationRecord
   has_many :booking_requests
   has_many :tours, through: :booking_requests
   has_many :comments
+  has_many :likes
+  has_many :liked_comments, through: :likes, source: :comment
   attr_accessor :remember_token
   before_save {self.email = email.downcase}
   validates :name, presence: true, length: {maximum: 50}

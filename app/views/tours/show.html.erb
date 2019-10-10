@@ -56,6 +56,12 @@
 <% @comments.each do |comment| %>
   <%= comment.content %> on the user <%= comment.user.name %>
   <%= button_tag "Edit", id: "toggle_comment_#{comment.id}", class: "toggle_comment" %>
+  <%= comment.likes.count %>
+  <% if current_user.likes.find_by(comment_id: comment.id) %>
+  <%= link_to "Unlike",like_path(current_user.likes.find_by(comment_id: comment.id)), method: :delete %>
+  <% else %>
+  <%= link_to "Like",likes_path(likes: {comment_id: comment.id}), method: :post %>
+  <% end %>
   <%= form_for (comment), html: {style: 'display: none;'} do |f| %>
   <%= f.label :comment %>
   <%= f.text_field :content, class: 'form-control' %>
@@ -66,6 +72,8 @@
     <% comment.sub_comments.each do |sub_cmt| %>
       <p><%= sub_cmt.content %> </p>
       <%= button_tag "Edit", id: "toggle_comment_#{sub_cmt.id}", class: "toggle_comment" %>
+      <%= link_to "Like",likes_path(likes: {comment_id: sub_cmt.id}), method: :post %>
+      <%= sub_cmt.likes.count %>
       <%= form_for (sub_cmt), html: {style: 'display: none;'} do |f| %>
       <%= f.label :comment %>
       <%= f.text_field :content, class: 'form-control' %>
@@ -74,7 +82,6 @@
   <% end %>
 
   <%= form_for (Comment.new) do |f| %>
-
     <%= f.label :comment %>
     <%= f.text_field :content, class: 'form-control' %>
     <%= f.hidden_field :tour_id, value: @tour.id %>
