@@ -2,7 +2,7 @@ class Admin::ToursController < ApplicationController
   before_action :require_admin
 
   def index
-    @tour = Tour.paginate(page: params[:page])
+    @tours = Tour.paginate(page: params[:page])
   end
 
   def new
