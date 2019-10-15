@@ -1,0 +1,15 @@
+<%= form_for([:admin, @tour]) do |f| %>
+  <%= render 'shared/error_messages', object: @tour %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+  
+  <%= f.label :price %>
+  <%= f.text_field :price, class: 'form-control' %>
+  
+  <%= f.label :content %>
+  <%= f.text_area(:content, size: "50x10", class: 'form-control') %>
+  
+  <%= f.label "Avatar" %>
+  <%= f.file_field :avatar %><br>
+  
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %><% end %>

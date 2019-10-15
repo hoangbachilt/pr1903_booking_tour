@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  
 
   resources :users
   resources :tours
@@ -16,4 +17,8 @@ Rails.application.routes.draw do
   resources :categories
   resources :likes
   resources :activities
+
+  namespace :admin do
+    resources :tours
+  end
 end
