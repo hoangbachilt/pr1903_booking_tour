@@ -37,5 +37,11 @@ class User < ApplicationRecord
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password? (remember_token)
   end
-
+  def self.search(name, page)
+    if name 
+      where('name LIKE ?', "%#{name}%").paginate(page: page)  
+    else  
+      paginate(page: page)  
+    end 
+  end
 end
