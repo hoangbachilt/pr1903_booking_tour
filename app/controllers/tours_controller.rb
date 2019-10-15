@@ -7,8 +7,8 @@ class ToursController < ApplicationController
   def show
     @tour = Tour.find(params[:id])
     @comments = @tour.comments.root_comments
-    @booking_request = @tour.booking_requests.find_by(user_id: current_user.id)
-    @comment = @tour.comments.build( user_id: current_user.id)
+    @booking_request = @tour.booking_requests.find_by(user_id: current_user.try(:id))
+    @comment = @tour.comments.build( user_id: current_user.try(:id))
   end
   
   private
