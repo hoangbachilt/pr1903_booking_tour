@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tour.name %>
+  <br>
+  <strong>Price:</strong>
+  <%= @tour.price %>
+  <br>
+  <strong>Content:</strong>
+  <%= @tour.content %>
+  <br>
+  <strong>Quanity user book this tour:</strong>
+  <%= @tour.booking_requests.waiting.count %>
+</p>

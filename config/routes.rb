@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :tours
     resources :users
+    resources :booking_requests
   end
 end

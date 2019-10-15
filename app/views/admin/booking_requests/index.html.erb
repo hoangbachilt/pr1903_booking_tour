@@ -1,0 +1,10 @@
+<% provide(:title,'Booking request of user') %>
+<h1>Booking request of user</h1>
+
+<ul class="booking_requests">
+  <% @booking_requests.each do |booking_request| %>
+    <li>
+     <%= link_to booking_request.tour.name, booking_request %>
+    </li>
+  <% end %>
+</ul>

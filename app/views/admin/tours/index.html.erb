@@ -20,7 +20,8 @@
 <ul class="tours">
   <% @tours.each do |tour| %>
     <li>
-     <%= link_to tour.name, tour %>
+     <%= link_to tour.name, admin_tour_path(tour), class: "col-md-2" %> 
+     <%= link_to "Delete", admin_tour_path(tour), method: :delete,data: { confirm: "You sure?" } %>
     </li>
   <% end %>
 </ul>

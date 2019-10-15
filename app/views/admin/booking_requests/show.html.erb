@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tour name:</strong> 
+  <%= @booking_request.tour.name%>  
+  <br>  
+  <strong>User email:</strong>  
+  <%= @booking_request.user.email %>  
+  <br>
+</p>
+<%= link_to 'Back', booking_requests_path %> 
