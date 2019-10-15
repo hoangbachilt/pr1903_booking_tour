@@ -1,5 +1,15 @@
   <% provide(:title,'All users') %>
   <h1>All users</h1>
+  <div class="row">
+  <%= form_tag(admin_users_path,method: :get) do %>
+    <div class="col-sm-2">
+      <%= text_field_tag :name, params[:name] %>
+    </div>
+    <div class="col-sm-1"> 
+      <%= submit_tag 'Search' %>
+    </div>
+  <% end %>
+</div>
   <%= will_paginate %>
   <ul class="users">
     <% @users.each do |user| %>
@@ -11,6 +21,7 @@
           <% else %>
               <%= gravatar_for user, size: 50 %>
           <% end %>
+
         <div class="col-sm-6">
           <%= user.id %>
         </div>

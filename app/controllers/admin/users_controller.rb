@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.search(params[:name], params[:page])
   end
 
   def show
