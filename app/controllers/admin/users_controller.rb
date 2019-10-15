@@ -1,7 +1,11 @@
 class Admin::UsersController < ApplicationController
-  before_action :set_user, only: [:show ]
+  before_action :set_user
   def index
     @users = User.paginate(page: params[:page])
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   private
