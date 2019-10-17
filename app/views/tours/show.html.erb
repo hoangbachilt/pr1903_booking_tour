@@ -14,7 +14,7 @@
   <%= @tour.ratings.average(:quanity) %>
   <br>
   <strong>status:</strong>
-  <% if @booking_request && @booking_request.status%>
+  <% if @booking_request && @booking_request.status %>
     <p>booking_request approved</p>
   <% elsif @booking_request %>
     <p>booking_request rejected</p>

@@ -4,7 +4,7 @@
 <ul class="booking_requests">
   <% @booking_requests.each do |booking_request| %>
     <li>
-     <%= link_to booking_request.tour.name, booking_request %>
+     <%= link_to booking_request.tour.name, admin_booking_request_path(booking_request) %>
     </li>
   <% end %>
 </ul>
