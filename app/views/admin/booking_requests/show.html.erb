@@ -2,10 +2,23 @@
 
 <p>
   <strong>Tour name:</strong> 
-  <%= @booking_request.tour.name%>  
+  <%= @booking_request.tour.name %>
+  <br>
+  <strong>User name:</strong>
+  <%= @booking_request.user.name %>
   <br>  
   <strong>User email:</strong>  
-  <%= @booking_request.user.email %>  
+  <%= @booking_request.user.email %>
   <br>
+  <p> You want 
+    <%= link_to 'Approve', admin_booking_request_path(@booking_request), :method => :put %>
+    or
+    <%= link_to 'Reject', admin_booking_request_path(@booking_request), :method => :delete %> ?
+  </p>
+  <br>
+
+  <% if @booking_request.status? %>
+    <strong>Status: Accepted booking request</strong>
+  <% end %>
 </p>
-<%= link_to 'Back', booking_requests_path %> 
+<%= link_to 'Back', admin_booking_requests_path %> 

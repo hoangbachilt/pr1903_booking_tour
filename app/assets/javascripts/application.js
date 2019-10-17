@@ -15,8 +15,11 @@
 //= require turbolinks
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
+//= require bootstrap
 //= require_tree .
   $(document).ready(function(){
+    $('.dropdown-toggle').dropdown();
     $('.toggle_comment').click(function(){
        var id = '#edit_comment_' +$(this)[0].id.split("_")[2];
        console.log(id);

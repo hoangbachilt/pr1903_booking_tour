@@ -8,7 +8,7 @@
   <%= @booking_request.user.email %>	
   <br>	
   <strong>status:</strong>	
-  <% if @booking_request.status%>	
+  <% if @booking_request.status? %>	
     <p>booking_request approved</p>	
   <% else %>	
     <p>booking_request rejected</p>	

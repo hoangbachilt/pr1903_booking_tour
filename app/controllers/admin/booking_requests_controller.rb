@@ -1,5 +1,6 @@
 class Admin::BookingRequestsController < ApplicationController
   before_action :require_admin
+  before_action :set_booking_request, only: [:show, :edit, :update, :destroy]
 
   def index
     @booking_requests = BookingRequest.page(params[:page]).order(created_at: :desc)
@@ -9,15 +10,30 @@ class Admin::BookingRequestsController < ApplicationController
   end
 
   def show
-    @booking_request = BookingRequest.find(params[:id])
   end
 
-  def create
+  def update
+    if @booking_request.update_attributes(:status => true)
+      flash[:success] = "Booking request successfully update"
+      redirect_to admin_booking_requests_path
+    else
+      flash[:danger] = "Error"
+      redirect_to admin_booking_requests_path
+    end
+  end
+
+  def destroy
+    respond_to do |format|
+      if @booking_request.destroy
+        format.html { redirect_to admin_booking_requests_path, notice: 'Booking request was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    end
   end
   
   private
-  def booking_request_params
-    params.require(:booking_request).permit(:tour_id, :user_id)
+  def set_booking_request
+    @booking_request = BookingRequest.find(params[:id])
   end
 
   def require_admin

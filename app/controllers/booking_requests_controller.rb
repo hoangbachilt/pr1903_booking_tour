@@ -4,7 +4,7 @@ class BookingRequestsController < ApplicationController
   before_action :logged_in_user, only: [:create] 
 
   def index
-    @booking_request = current_user.booking_requests.page(params[:page]).order(created_at: :desc)
+    @booking_requests = current_user.booking_requests.page(params[:page]).order(created_at: :desc)
   end
 
   def new
@@ -18,8 +18,7 @@ class BookingRequestsController < ApplicationController
     # if logged_in?
     @booking_request = current_user.booking_requests.new(booking_request_params)
     if @booking_request.save
-      @booking_request.status = true
-      flash[:success] = "Success booking"
+      flash[:success] = "Success booking. Please waiting admin accept"
       redirect_to booking_requests_path
     else
       flash[:danger] = "Booking fail"
