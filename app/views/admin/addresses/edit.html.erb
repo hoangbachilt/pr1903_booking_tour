@@ -1,0 +1,17 @@
+<% provide(:title, "Edit address") %>
+<h1>Update City</h1>
+<div class="row">
+  <div  class="col-md-6 col-md-offset-3">
+    <%= form_for([:admin, @address]) do |f| %>
+      <%= render 'shared/error_messages', object: @address %>
+      <%= f.label :city %>
+      <%= f.text_field :city, class: 'form-control' %>
+  
+      <%= f.label "Picture" %>
+      <%= f.file_field :picture %>
+      <br>
+      <%= f.submit  "Save changes", class: "btn  btn-primary" %>
+    <% end %>
+    
+  </div>
+</div>
