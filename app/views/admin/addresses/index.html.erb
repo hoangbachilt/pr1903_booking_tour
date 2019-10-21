@@ -5,9 +5,11 @@
   <div class="row">
     <% @addresses.each do |address| %>
       <div class="nav-thumbnails">
-        <li class="col-sm-3">
+        <div class="col-sm-3">
           <div class="item-thumbnail" title="Tour du lich tai <%= address.city %>">
-            <%= link_to address_path(address) do %>
+            <%= link_to admin_address_path(address) do %>
+            <%= link_to "Edit", edit_admin_address_path(address) %> ||
+            <%= link_to "Delete", admin_address_path(address), method: :delete,data: { confirm: "You sure?" } %>
               <div>
                 <% if address.picture.attached? %>
                   <%= image_tag(address.picture, size: "400x200") %>
@@ -16,7 +18,7 @@
               </div>
             <% end %>
           </div>
-        </li>
+        </div>
       </div>
     <% end %>
   </div>

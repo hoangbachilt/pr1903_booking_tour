@@ -13,6 +13,10 @@ class Admin::ToursController < ApplicationController
     @tour = Tour.find(params[:id])
   end
 
+  def edit
+    @tour = Tour.find(params[:id])
+  end
+
   def create
     @tour = Tour.new(tour_params)
     if @tour.save
@@ -20,6 +24,15 @@ class Admin::ToursController < ApplicationController
     else
       flash[:danger] = "Create fail"
       render :new
+    end
+  end
+
+  def update
+    if @tour.update_attributes(tour_params)
+      flash[:success] = "Update tour successfully"
+      redirect_to admin_tours_path
+    else
+      render "edit"
     end
   end
 
@@ -40,6 +53,6 @@ class Admin::ToursController < ApplicationController
   end
 
   def tour_params
-    params.require(:tour).permit(:name, :price, :content)
+    params.require(:tour).permit(:name, :price, :content, :picture)
   end
 end

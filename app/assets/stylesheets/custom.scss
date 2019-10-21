@@ -187,3 +187,45 @@ input {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+body {
+  padding-top: 50px;
+}
+ /* Thumbnail */
+
+
+.nav-thumbnails {
+    display: block;
+    padding: 0;
+    list-style-type: none;
+}
+
+.nav-thumbnails li {
+    padding-bottom: 20px;
+}
+
+.item-thumbnail {
+  webkit-border-radius: 6px;
+  border-radius: 6px;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  float: left;
+  overflow: hidden;
+}
+
+.item-name {
+  font-size: 16px;
+  margin: 0;
+  color: #fff;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  padding: 7px;
+  width: 100%;
+  font-weight: 700;
+  text-align: center;
+  background: rgba(0,174,239,.7);
+  border-top: 1px solid rgba(111,204,237,.7);
+}
+ 
