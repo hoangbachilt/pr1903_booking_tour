@@ -1,4 +1,5 @@
 class Admin::AddressesController < ApplicationController
+  before_action :require_admin
   before_action :set_address, only: [:show, :edit, :update, :destroy]
   def index
     @addresses = Address.paginate(page: params[:page])
@@ -46,6 +47,13 @@ class Admin::AddressesController < ApplicationController
   private
   def set_address
     @address = Address.find(params[:id])
+  end
+
+  def require_admin
+    unless current_user.admin?
+      flash[:danger] = "You are not admin"
+      redirect_to root_path
+    end
   end
 
   def address_params

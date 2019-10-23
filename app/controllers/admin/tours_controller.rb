@@ -28,9 +28,10 @@ class Admin::ToursController < ApplicationController
   end
 
   def update
+    @tour = Tour.find(params[:id])
     if @tour.update_attributes(tour_params)
       flash[:success] = "Update tour successfully"
-      redirect_to admin_tours_path
+      redirect_to admin_address_path(@tour.address)
     else
       render "edit"
     end

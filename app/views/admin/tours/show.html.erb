@@ -12,4 +12,7 @@
   <br>
   <strong>Quanity user book this tour:</strong>
   <%= @tour.booking_requests.waiting.count %>
+  <br>
+  <%= link_to "Edit", edit_admin_tour_path(@tour) %>
+  <%= link_to "Delete", admin_tour_path(@tour), method: :delete, data: { confirm: "You sure ?" } %>
 </p>

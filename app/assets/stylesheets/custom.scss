@@ -228,4 +228,42 @@ body {
   background: rgba(0,174,239,.7);
   border-top: 1px solid rgba(111,204,237,.7);
 }
- 
+
+.nav-search form.search-form input[type='text']::-webkit-input-placeholder{color:#3c3c3c;}
+.nav-search form .searchbutton{top:0;}
+
+.nav-search{padding:0px;background-color:#fff;}
+.nav-search form{display:table;width:calc(100% - 470px);height:40px;border:1px solid #b3b3b3;float:right}
+.nav-search form input[type='text']{border:none;display:table-cell;width:85%;height:40px;padding:0 20px;}
+.nav-search form .searchbutton{width:40px;height:40px;padding:0;display:table-cell;border:none;box-shadow:none;text-align:center;vertical-align:middle;position:relative;top:-1px;float: right;background: #d9098c;color: #fff;}
+
+.tours-layout{margin-bottom: 30px;transition:all 0.5s ease;-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-o-transition:all 0.5s ease;}
+.tours-layout .image-wrapper{position:relative;overflow:hidden;}
+.tours-layout .image-wrapper .link{display:block;width:100%;transition:all 0.5s ease;-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-o-transition:all 0.5s ease;}
+.tours-layout .image-wrapper .link img{width:100%;transition:all 0.8s ease;-webkit-transition:all 0.8s ease;-moz-transition:all 0.8s ease;-o-transition:all 0.8s ease;}
+.tours-layout .image-wrapper .link:before{content:"";position:absolute;z-index:2;width:100%;height:120%;top:0;left:0;transition:all 0.5s ease;-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-o-transition:all 0.5s ease;background:linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0.6) 75%, rgba(0, 0, 0, 0.7) 85%, rgba(0, 0, 0, 0.8) 90%, rgba(0, 0, 0, 0.9) 100%);}
+.tours-layout .image-wrapper .title-wrapper{position:absolute;bottom:20px;left:20px;right:20px;display:inline-block;color:#fff;font-size:20px;z-index:5;}
+.tours-layout .image-wrapper .title-wrapper .title{color:#fff;float:left;text-transform:uppercase;position:relative;}
+.tours-layout .image-wrapper .title-wrapper .title:before{content:"";position:absolute;top:100%;left:0;width:0%;height:1px;background:#ffdd00;transition:all 0.5s ease;-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-o-transition:all 0.5s ease;}
+.tours-layout .image-wrapper .title-wrapper .title:hover{color:#ffdd00;}
+.tours-layout .image-wrapper .title-wrapper .title:hover:before{width:100%;}
+.tours-layout .image-wrapper .title-wrapper .icons{float:right;font-size:30px;}
+.tours-layout .content-wrapper{background-color: #DCDCDC;}
+.tours-layout .content-wrapper > .content{padding:40px;text-align:center;}
+.tours-layout .content-wrapper > .content .title{margin-bottom:15px;}
+.tours-layout .content-wrapper > .content .title .price{color:#d9098c;display:inline-block;}
+.tours-layout .content-wrapper > .content .title .price sup{font-size:14px;font-weight:bold;top:-12px;left:-2px;}
+.tours-layout .content-wrapper > .content .title .price .number{font-size:30px;font-weight:bold;}
+.tours-layout .content-wrapper > .content .title .for-price{margin-bottom:0;margin-left:6px;display:inline-block;}
+.tours-layout .content-wrapper > .content > .text{margin-bottom:20px;}
+.tours-layout .content-wrapper > .content .group-btn-tours{border-radius:50px;-webkit-border-radius:50px;-moz-border-radius:50px;color:#fff;text-transform:capitalize;text-align:center;display:inline-block;padding:0;}
+.tours-layout .content-wrapper > .content .group-btn-tours .left-btn,
+.tours-layout .content-wrapper > .content .group-btn-tours .right-btn{color:#fff;padding:4px 10px;display:inline-block;background-color:#4d4d4d;transition:all 0.5s ease;-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-o-transition:all 0.5s ease;}
+.tours-layout .content-wrapper > .content .group-btn-tours .left-btn:hover,
+.tours-layout .content-wrapper > .content .group-btn-tours .right-btn:hover{background-color:#ffdd00;color:#434a54;}
+.tours-layout .content-wrapper > .content .group-btn-tours .left-btn{padding-left:25px;border-right:1px solid #797979;border-radius:50px 0 0 50px;}
+.tours-layout .content-wrapper > .content .group-btn-tours .right-btn{padding-right:25px;border-radius:0 50px 50px 0;}
+.tours-layout .content-wrapper > .content .group-btn-tours:hover .left-btn{border-right:1px solid #fff;}
+.tours-layout:hover{box-shadow:0px 5px 20px 0px rgba(0, 0, 0, 0.1);}
+.tours-layout:hover .image-wrapper .link img{transform:scale(1.2);-webkit-transform:scale(1.2);-moz-transform:scale(1.2);-ms-transform:scale(1.2);-o-transform:scale(1.2);}
+.tours-layout:hover .image-wrapper .link:before{top:-20%;}

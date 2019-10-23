@@ -1,4 +1,5 @@
 class Tour < ApplicationRecord
+  has_one_attached :picture
   belongs_to :address
   has_many :comments
   has_many :ratings
